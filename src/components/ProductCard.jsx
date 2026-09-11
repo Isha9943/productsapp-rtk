@@ -3,12 +3,15 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom'
 
 export default function ProductCard({product}) {
   return (
     <div className="col-md-4 my-2" >
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={product.image} />
+      <Link to={`details/${product.id}`}>
+        <Card.Img variant="top" src={product.image} />
+      </Link>
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>
