@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+
+import ProductCard from './ProductCard'
 
 export default function ProductList() {
+  let [products, setProducts] = useState([]);
+  useEffect(() => {
+      axios.get('https://fakestoreapi.com/products?limit=5')
+      .then(res => setProducts(res.data))
+  }, [])
   return (
-    <div>ProductList</div>
+    <div className="row">
+      {
+        products && products.map(product => <ProductCard key={product.id} product={product} />)
+      }
+    </div>
   )
 }
