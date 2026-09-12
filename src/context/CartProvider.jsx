@@ -33,8 +33,12 @@ export default function CartProvider(props) {
         dispatch({type: 'INCREMENT', payload: {id}})
     }
 
+    function decrement(id){
+        dispatch({type: 'DECREMENT', payload: {id}})
+    }
+
     return (
-        <CartContext.Provider value={{...state, addToCart, removeFromCart, clearCart, increment}}>
+        <CartContext.Provider value={{...state, addToCart, removeFromCart, clearCart, increment, decrement}}>
             {props.children}
         </CartContext.Provider>
     );
