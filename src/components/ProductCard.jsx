@@ -24,15 +24,7 @@ export default function ProductCard({product}) {
         Rs. {product.price} &nbsp;
         <FontAwesomeIcon icon={faHeart} color='red' /> &nbsp;
         <FontAwesomeIcon 
-        onClick={() => cardContext.addToCart({
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          image: product.image,
-          quantity: 1,
-          amount: product.price
-
-        })} 
+        onClick={() => cardContext.addToCart(product.id)} 
         icon={faShoppingCart} color='blue'/>
       </Card.Footer>
     </Card>

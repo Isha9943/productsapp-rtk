@@ -1,4 +1,5 @@
-import {createContext, useState, useReducer} from 'react'
+import {createContext, useState, useReducer, useContext} from 'react'
+import { ProductContext } from './ProductProvider';
 import cartReducer  from '../reducers/cartReducer';
 
 
@@ -17,7 +18,15 @@ const initialState = {
 
 export default function CartProvider(props) {
     let [state, dispatch] = useReducer(cartReducer, initialState);
-    function addToCart(item) {
+    let {products} = useContext(ProductContext);
+    // function addToCart(item) {
+    //     dispatch({type: 'ADD_TO_CART', payload: item})
+    // }
+
+    function addToCart(id){
+        let item = products.find(product => product.id === id);
+        item.quantity = 1;
+        item.amount = item.price;
         dispatch({type: 'ADD_TO_CART', payload: item})
     }
 

@@ -2,7 +2,7 @@ export default function cartReducer(state, action) {
     switch(action.type) {
 
         case 'ADD_TO_CART':
-
+            
             if(state.cartItems.find(item => item.id === action.payload.id)) {
                 return {
                     ...state,
@@ -14,7 +14,7 @@ export default function cartReducer(state, action) {
             return {
                 cartItems: [...state.cartItems, action.payload],
                 total: state.total + action.payload.price,
-                quantity: state.quantity + 1
+                quantity: state.quantity+1
 
             }
         
