@@ -19,7 +19,6 @@ export default function CartProvider(props) {
     let [state, dispatch] = useReducer(cartReducer, initialState);
     function addToCart(item) {
         dispatch({type: 'ADD_TO_CART', payload: item})
-
     }
 
     function removeFromCart(id) {
@@ -28,12 +27,10 @@ export default function CartProvider(props) {
 
     function clearCart() {
         dispatch({type: 'CLEAR_CART'})
-        
     }
 
     function increment(id){
         dispatch({type: 'INCREMENT', payload: {id}})
-
     }
 
     return (
