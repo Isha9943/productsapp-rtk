@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-
 import ProductCard from './ProductCard'
+import { useContext } from 'react';
+import { ProductContext } from '../context/ProductProvider';
+
 
 export default function ProductList() {
-  let [products, setProducts] = useState([]);
-  useEffect(() => {
-      axios.get('https://fakestoreapi.com/products?limit=5')
-      .then(res => setProducts(res.data))
-  }, [])
+  let {products} = useContext(ProductContext);
   return (
     <div className="row">
       {

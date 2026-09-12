@@ -1,7 +1,8 @@
 import {createContext, useState, useReducer, useContext} from 'react'
 import { ProductContext } from './ProductProvider';
 import cartReducer  from '../reducers/cartReducer';
-
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const CartContext = createContext();
 
@@ -17,6 +18,7 @@ const initialState = {
 }
 
 export default function CartProvider(props) {
+    let navigate = useNavigate();
     let [state, dispatch] = useReducer(cartReducer, initialState);
     let {products} = useContext(ProductContext);
     // function addToCart(item) {
@@ -35,7 +37,19 @@ export default function CartProvider(props) {
     }
 
     function clearCart() {
-        dispatch({type: 'CLEAR_CART'})
+        let user = window.sessionStorage.getItem('user');
+        let order  ={
+            "customer": user,
+            "orderDate": new Date(),
+            "items": state.cartItems,
+            "total": state.total
+        }
+        axios.post('http://localhost:1234/orders', order)
+        .then(res => {
+            dispatch({type: 'CLEAR_CART'})
+            navigate("/")
+        });
+        
     }
 
     function increment(id){
