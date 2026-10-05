@@ -6,15 +6,20 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
 import ProductProvider from './context/ProductProvider';
+import { Provider } from 'react-redux'; 
 
+
+import store from './redux/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <ProductProvider>
+  <Provider store={store}>
+    <ProductProvider>
       <App />
     </ProductProvider>
+  </Provider>
   </BrowserRouter>
 );
 
