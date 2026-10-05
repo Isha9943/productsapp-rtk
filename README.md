@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run api`
+
+Starts the local JSON Server API using `data.json` at [http://localhost:1234](http://localhost:1234).
+Run this in a separate terminal and keep it running alongside `npm start`.
+The product list and product form require this API; without it, Axios reports a network error.
+
 ### `npm start`
 
 Runs the app in the development mode.\
