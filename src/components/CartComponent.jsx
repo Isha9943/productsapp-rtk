@@ -1,15 +1,10 @@
-import React, {useContext} from 'react'
-import { CartContext } from '../context/CartProvider';
+import React from 'react'
 import Button from 'react-bootstrap/Button';
 import CartList from './CartList';
 
 export default function CartComponent() {
-  let {cartItems, total, clearCart} = useContext(CartContext);
   return (
     <div>
-      {
-        cartItems.map((item) => <CartList key={item.id} item={item} />)
-      }
       <div className="row">
         <div className="col-md-8">
           &nbsp;
@@ -26,7 +21,7 @@ export default function CartComponent() {
         </div>
 
         <div className="col-md-4">
-          <Button type="button" onClick={clearCart}>Checkout</Button>
+          <Button type="button">Checkout</Button>
         </div>
       </div>
     </div>

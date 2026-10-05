@@ -1,5 +1,4 @@
-import React, {useContext} from 'react'
-import { CartContext } from '../context/CartProvider';
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Container from 'react-bootstrap/Container';
@@ -9,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Badge } from 'react-bootstrap';
 
 export default function NavBarComponent() {
-  let {quantity} = useContext(CartContext);
+  let quantity = 0;
   return (
     <Navbar bg="dark" data-bs-theme="dark">
         <Container>
